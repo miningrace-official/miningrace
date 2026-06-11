@@ -5,350 +5,505 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miningrace | Leading Global Crypto Mining Platform</title>
     <style>
+        /* CSS Core Properties matching the minimalist, dark design blueprint */
         :root {
-            --primary-color: #1a1a1a;
-            --accent-color: #f39c12;
-            --text-color: #333;
-            --light-bg: #f9f9f9;
-            --white: #ffffff;
+            --bg-main: #0a0a0a;
+            --bg-card: #121212;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent-glow: #f39c12;
+            --border-color: #222222;
+            --font-stack: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            background-color: var(--white);
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: var(--font-stack);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 30px;
         }
 
-        /* Header Layout */
-        header {
-            background-color: var(--white);
-            border-bottom: 1px solid #eaeaea;
+        /* Top Navigation Bar Element */
+        nav {
+            border-bottom: 1px solid var(--border-color);
             padding: 20px 0;
+            background-color: rgba(10, 10, 10, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
         }
 
-        .header-table {
-            width: 100%;
-            border-collapse: collapse;
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .header-table td {
-            border: none;
-            vertical-align: middle;
+        .nav-identity {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        .logo-col {
-            width: 15%;
-        }
-
-        .logo-col img {
-            width: 100px;
+        .nav-identity img {
+            width: 45px;
             height: auto;
+            border-radius: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Hero Splash Showcase Header Block */
+        .hero-banner {
+            padding: 100px 0 80px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-tagline {
+            color: var(--accent-glow);
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .hero-banner h1 {
+            font-size: 4em;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .hero-banner p {
+            font-size: 1.25em;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Split-Layout Layout Grid Component */
+        .grid-split {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .grid-split.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .split-content {
+            flex: 1;
+        }
+
+        .split-media {
+            flex: 1;
+        }
+
+        .split-media img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
             display: block;
         }
 
-        .title-col {
-            width: 85%;
-            text-align: center;
-            padding-right: 15%; /* Balances center alignment away from the logo */
+        .section-label {
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            display: block;
         }
 
-        .title-col h1 {
-            margin: 0;
-            font-size: 2.8em;
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        .title-col p {
-            margin: 5px 0 0 0;
-            font-size: 1.2em;
-            color: #666;
-            font-style: italic;
-        }
-
-        /* About Section Custom Split View */
-        .about-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 40px 0;
-        }
-
-        .about-table td {
-            border: none;
-            vertical-align: top;
-        }
-
-        .about-text-col {
-            width: 55%;
-            padding-right: 30px;
-        }
-
-        .about-image-col {
-            width: 45%;
-        }
-
-        .about-image-col img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        /* Global Sections & Subheadings */
         h2 {
-            font-size: 2em;
-            color: var(--primary-color);
-            border-left: 5px solid var(--accent-color);
-            padding-left: 15px;
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-
-        h3 {
-            font-size: 1.4em;
-            color: #2c3e50;
-            margin-top: 30px;
-            margin-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 25px;
+            color: var(--text-primary);
         }
 
         p {
-            margin-bottom: 1.5em;
-            font-size: 1.05em;
-            color: #444;
-        }
-
-        /* Hyperlink Highlighting */
-        a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 1px dashed var(--accent-color);
-            transition: all 0.3s ease;
-        }
-
-        a:hover {
-            color: var(--primary-color);
-            border-bottom: 1px solid var(--primary-color);
-        }
-
-        /* Image Formatting within Body Sections */
-        .section-image {
-            width: 100%;
-            max-height: 450px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin: 15px 0 35px 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        /* Competitive Edge List */
-        .edge-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .edge-list li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 12px;
-            font-size: 1.05em;
-        }
-
-        .edge-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-
-        /* Quote Callout styling */
-        blockquote {
-            background-color: var(--light-bg);
-            border-left: 5px solid var(--primary-color);
-            margin: 40px 0;
-            padding: 20px 30px;
-            font-style: italic;
-            font-size: 1.25em;
-            color: #555;
-            border-radius: 0 8px 8px 0;
-        }
-
-        hr {
-            border: 0;
-            height: 1px;
-            background: #eaeaea;
-            margin: 40px 0;
-        }
-
-        /* Footer Grid styling */
-        footer {
-            background-color: var(--light-bg);
-            padding: 40px 0;
-            margin-top: 60px;
-            border-top: 1px solid #eaeaea;
-        }
-
-        .footer-grid {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-        }
-
-        .footer-info, .footer-social {
-            flex: 1;
-            min-width: 250px;
+            color: var(--text-secondary);
+            font-size: 1.1em;
             margin-bottom: 20px;
         }
 
-        .footer-social ul {
+        /* Anchor Links Highlighting Matrix */
+        a.highlight-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid var(--accent-glow);
+            transition: all 0.3s ease;
+        }
+
+        a.highlight-link:hover {
+            color: var(--accent-glow);
+            background: rgba(243, 156, 18, 0.05);
+        }
+
+        /* Numbered Architecture Grid Ecosystem Container */
+        .services-blueprint {
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .services-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+            margin-top: 50px;
+        }
+
+        .service-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .service-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .service-meta {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: var(--accent-glow);
+            font-family: monospace;
+        }
+
+        .service-info h3 {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .service-image-wrapper {
+            margin-top: 25px;
+            width: 100%;
+        }
+
+        .service-image-wrapper img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Why Choose List Component */
+        .edge-matrix {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .edge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .edge-card {
+            background-color: var(--bg-card);
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .edge-card h4 {
+            font-size: 1.3em;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .edge-card p {
+            font-size: 1em;
+            margin-bottom: 0;
+        }
+
+        /* Minimalist Quote Module Block */
+        .quote-block {
+            padding: 120px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        blockquote {
+            font-size: 2.2em;
+            font-weight: 600;
+            letter-spacing: -1px;
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        blockquote cite {
+            display: block;
+            font-size: 0.45em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-secondary);
+            margin-top: 25px;
+            font-style: normal;
+        }
+
+        /* Structural Typography for Footer Layout */
+        footer {
+            padding: 80px 0;
+            background-color: #050505;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+        }
+
+        .footer-brand h4 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            font-size: 0.95em;
+            max-width: 400px;
+        }
+
+        .footer-links h5 {
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
             list-style: none;
-            padding: 0;
-            margin: 0;
         }
 
-        .footer-social ul li {
-            margin-bottom: 8px;
+        .footer-links ul li {
+            margin-bottom: 12px;
         }
 
-        /* Responsiveness for Smaller Screen Architectures */
-        @media (max-width: 768px) {
-            .header-table td, .about-table td {
-                display: block;
-                width: 100% !important;
-                padding-right: 0 !important;
-                text-align: center !important;
+        .footer-links ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Responsive Breakpoints Rules */
+        @media (max-width: 992px) {
+            .grid-split, .grid-split.reverse {
+                flex-direction: column;
+                gap: 40px;
+                padding: 60px 0;
             }
-            .logo-col img {
-                margin: 0 auto 15px auto;
+            .service-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
             }
-            .title-col {
-                padding-right: 0 !important;
-            }
-            .about-image-col {
-                margin-top: 20px;
+            .hero-banner h1 {
+                font-size: 2.8em;
             }
             .footer-grid {
-                flex-direction: column;
-                text-align: center;
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Site Navigation Header Area -->
-    <header>
+    <nav>
+        <div class="container nav-wrapper">
+            <div class="nav-identity">
+                <img src="Logo.jpg" alt="Logo">
+                <span style="font-weight: 700; letter-spacing: -0.5px;">MININGRACE</span>
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#services">Our Services</a>
+                <a href="#mission">Mission & Vision</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-banner">
         <div class="container">
-            <table class="header-table">
-                <tr>
-                    <td class="logo-col">
-                        <img src="Logo.jpg" alt="Miningrace Logo">
-                    </td>
-                    <td class="title-col">
-                        <h1>Miningrace</h1>
-                        <p>Global Crypto Mining Platform</p>
-                    </td>
-                </tr>
-            </table>
+            <span class="hero-tagline">Premium Crypto Mining Platform</span>
+            <h1>Miningrace</h1>
+            <p>Empowering global mining operations through connected collective network intelligence architecture.</p>
         </div>
     </header>
 
-    <!-- Main Dynamic Content Wrapper -->
-    <main class="container">
+    <main>
 
-        <!-- Split Layout About Section Area -->
-        <table class="about-table">
-            <tr>
-                <td class="about-text-col">
-                    <h2>About Miningrace</h2>
-                    <p>Welcome to <a href="https://miningrace.odoo.com/" target="_blank"><strong>Miningrace</strong></a>, a revolutionary community-based crypto mining platform built on the innovative Mining Grid. We connect passionate miners from around the world into a unified global network where each participant, known as a racer, is assigned a strategic position called a spot.</p>
-                    <p>By combining shared mining power, community participation, and transparent reward redistribution, <a href="https://miningraceofficial.wordpress.com/" target="_blank"><strong>Miningrace</strong></a> eliminates the high barriers to traditional crypto mining. Our ecosystem drives collective success, allowing everyday users to easily tap into the digital economy and thrive within a collaborative, highly secure, and efficiently connected global mining network.</p>
-                </td>
-                <td class="about-image-col">
-                    <img src="bhg.jpg" alt="About Miningrace Ecosystem Layout Grid">
-                </td>
-            </tr>
-        </table>
-
-        <hr>
-
-        <!-- Our System Services Area -->
-        <section>
-            <h2>Our Services</h2>
-
-            <h3>1. Community-Powered Cloud Mining</h3>
-            <p>Experience the power of <a href="https://wtoregister.com/en/articles/4386/miningrace-strengthens-the-growth-of-community-based-mining" target="_blank"><strong>community-based mining</strong></a> through our optimized Mining Grid. This specialized service allows users to pool resources, maximize hashing power, and earn transparent, redistributed rewards without dealing with high electricity costs or complex hardware configurations.</p>
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/2522329518496730405_0" alt="Community Cloud Mining Infrastructure Operations" class="section-image">
-
-            <h3>2. Hardware & Hosting Marketplace</h3>
-            <p>Through our global network, Miningrace connects racers directly to whitelisted, verified mining farms. This service provides seamless access to purchase high-performance mining hardware and secure professional remote hosting, allowing your equipment to be managed by experts in optimized data centers.</p>
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/3138256132587021475_0" alt="High Performance ASIC Hardware and Hosting Marketplace" class="section-image">
-
-            <h3>3. Gamified Mining Ecosystem (Cores Racing)</h3>
-            <p>Miningrace transforms traditional mining into an interactive experience with our specialized "Cores Racing" system. Racers can utilize stable mining cards to participate in daily digital races and network challenges, boosting engagement while unlocking additional paths to earn maximized Bitcoin rewards.</p>
-            <img src="bhg(3).jpg" alt="Gamified Cores Racing Blockchain Dashboard App Interface" class="section-image">
+        <section id="about" class="container grid-split">
+            <div class="split-content">
+                <span class="section-label">The Blueprint</span>
+                <h2>About Our Brand</h2>
+                <p>Welcome to <a href="https://miningrace.odoo.com/" target="_blank" class="highlight-link">Miningrace</a>, a revolutionary community-based crypto mining platform built on the innovative Mining Grid. We connect passionate miners from around the world into a unified global network where each participant, known as a racer, is assigned a strategic position called a spot.</p>
+                <p>By combining shared mining power, community participation, and transparent reward redistribution, <a href="https://miningraceofficial.wordpress.com/" target="_blank" class="highlight-link">Miningrace</a> eliminates the high barriers to traditional crypto mining. Our ecosystem drives collective success, allowing everyday users to easily tap into the digital economy and thrive within a collaborative, highly secure, and efficiently connected global mining network.</p>
+            </div>
+            <div class="split-media">
+                <img src="bhg.jpg" alt="About Miningrace Ecosystem Infrastructure UI">
+            </div>
         </section>
 
-        <hr>
+        <section id="services" class="container services-blueprint">
+            <span class="section-label">What We Do</span>
+            <h2>Cultivating the Collective</h2>
+            <p style="max-width: 600px;">We do more than just manage hashing nodes. We build global utility infrastructure for racers and mining enthusiasts worldwide.</p>
+            
+            <div class="services-stack">
+                <div class="service-row">
+                    <div class="service-meta">- 01 / Aesthetic</div>
+                    <div class="service-info">
+                        <h3>Community-Powered Cloud Mining</h3>
+                        <p>Experience the power of <a href="https://wtoregister.com/en/articles/4386/miningrace-strengthens-the-growth-of-community-based-mining" target="_blank" class="highlight-link">community-based mining</a> through our optimized Mining Grid. This specialized service allows users to pool resources, maximize hashing power, and earn transparent, redistributed rewards without dealing with high electricity costs or complex hardware configurations.</p>
+                        <div class="service-image-wrapper">
+                            <img src="http://googleusercontent.com/image_collection/image_retrieval/2522329518496730405_0" alt="Community Cloud Mining Infrastructure Operations">
+                        </div>
+                    </div>
+                </div>
 
-        <!-- Value Additions / Core Advantage Component -->
-        <section>
-            <h2>Why Choose Miningrace? (The Competitive Edge)</h2>
-            <ul class="edge-list">
-                <li><strong>Zero Technical Overhead:</strong> No need to configure rigs, manage noisy fans, or deal with massive home electricity bills. We handle the heavy lifting.</li>
-                <li><strong>True Transparency:</strong> Built-in cryptographic protocols ensure that reward distribution across the grid is completely verifiable and immutable.</li>
-                <li><strong>Network Synergy:</strong> Unlike solo mining where you compete against the world, our Grid system ensures that as the community grows, the collective mining stability increases.</li>
-            </ul>
-            <img src="bhg(4).jpg" alt="Strategic Advantages of Joining the Network Grid" class="section-image">
+                <div class="service-row">
+                    <div class="service-meta">- 02 / Ecosystem</div>
+                    <div class="service-info">
+                        <h3>Hardware & Hosting Marketplace</h3>
+                        <p>Through our global network, Miningrace connects racers directly to whitelisted, verified mining farms. This service provides seamless access to purchase high-performance mining hardware and secure professional remote hosting, allowing your equipment to be managed by experts in optimized data centers.</p>
+                        <div class="service-image-wrapper">
+                            <img src="http://googleusercontent.com/image_collection/image_retrieval/3138256132587021475_0" alt="High Performance ASIC Hardware and Hosting Marketplace">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-row">
+                    <div class="service-meta">- 03 / Network</div>
+                    <div class="service-info">
+                        <h3>Gamified Mining Ecosystem (Cores Racing)</h3>
+                        <p>Miningrace transforms traditional mining into an interactive experience with our specialized "Cores Racing" system. Racers can utilize stable mining cards to participate in daily digital races and network challenges, boosting engagement while unlocking additional paths to earn maximized Bitcoin rewards.</p>
+                        <div class="service-image-wrapper">
+                            <img src="bhg(3).jpg" alt="Gamified Cores Racing Blockchain Dashboard App Interface">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- Corporate Philosophies Statement Callout -->
-        <blockquote>
-            "True decentralization isn't just about individual ownership; it's about collective empowerment. When we race together, we win together."
-        </blockquote>
-
-        <hr>
-
-        <!-- Strategic Vision Statements Areas -->
-        <section>
-            <h2>Our Mission</h2>
-            <p>Our mission is to democratize the cryptocurrency mining industry by providing accessible, transparent, and sustainable mining solutions for everyone. We aim to dismantle the traditional technical and financial barriers that prevent everyday individuals from participating in Bitcoin mining. By leveraging a structured, pre-programmed redistribution framework, we ensure that network growth directly translates to collective rewards. Through our **"Race to Zero Carbon"** initiative, we are actively pushing the industry toward a greener future, fostering a global ecosystem where community participation and technological innovation go hand-in-hand to create lasting, decentralized financial opportunities.</p>
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/18322482083086853179_0" alt="Our Mission Towards Sustainable Infrastructure Development" class="section-image">
+        <section class="container edge-matrix">
+            <span class="section-label">The Competitive Edge</span>
+            <h2>Why Choose Miningrace?</h2>
+            
+            <div class="edge-grid">
+                <div class="edge-card">
+                    <h4>Zero Technical Overhead</h4>
+                    <p>No need to configure complex server rigs, manage noisy cooling fans, or deal with massive home electricity bills. We handle the technical heavy lifting.</p>
+                </div>
+                <div class="edge-card">
+                    <h4>True Transparency</h4>
+                    <p>Built-in cryptographic protocols ensure that reward distribution variables across the grid architecture are completely verifiable, safe, and immutable.</p>
+                </div>
+                <div class="edge-card">
+                    <h4>Network Synergy</h4>
+                    <p>Unlike traditional solo mining frameworks where you compete against the world, our Grid system ensures that community growth stabilizes individual outputs.</p>
+                </div>
+            </div>
+            <img src="bhg(4).jpg" alt="Strategic Advantages of Joining the Network Grid Interface" class="section-image">
         </section>
 
-        <hr>
+        <section class="quote-block">
+            <div class="container">
+                <blockquote>
+                    "Discipline isn't a restriction; it's the ultimate form of luxury and freedom. When we race together, we win together."
+                    <cite>— The Miningrace Philosophy</cite>
+                </blockquote>
+            </div>
+        </section>
 
-        <section>
-            <h2>Our Vision</h2>
-            <p>Our vision is to build the world's most interconnected and eco-friendly <a href="https://www.prlog.org/13150651-miningrace-advances-the-growth-of-global-mining-communities.html" target="_blank"><strong>global mining communities</strong></a>, capped at an elite network of one million active participants. We envision a future where cryptocurrency mining is completely decentralized, sustainable, and driven by collective human synergy rather than corporate monopolies. By expanding our global grid and continually integrating whitelisted, renewable energy mining farms, we strive to set the gold standard for collaborative blockchain networks. We want to empower every racer on our grid with the tools and shared power necessary to achieve long-term success in the digital asset space.</p>
-            <p>To dive deep into the foundations of our collaborative architecture, read the verified <a href="https://www.nairaland.com/8679924/miningrace-reveals-6-facts-community" target="_blank"><strong>6 facts about community mining</strong></a> to understand our systematic framework operations.</p>
-            <img src="Untitled design (59).jpg" alt="Our Global Connected Network Vision Strategy" class="section-image">
+        <section id="mission" class="container grid-split">
+            <div class="split-content">
+                <span class="section-label">Execution Strategy</span>
+                <h2>Our Mission</h2>
+                <p>Our mission is to democratize the cryptocurrency mining industry by providing accessible, transparent, and sustainable mining solutions for everyone. We aim to dismantle the traditional technical and financial barriers that prevent everyday individuals from participating in Bitcoin mining.</p>
+                <p>By leveraging a structured, pre-programmed redistribution framework, we ensure that network growth directly translates to collective rewards. Through our <strong>"Race to Zero Carbon"</strong> initiative, we are actively pushing the industry toward a greener future, fostering a global ecosystem where community participation and technological innovation go hand-in-hand to create lasting, decentralized financial opportunities.</p>
+            </div>
+            <div class="split-media">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/18322482083086853179_0" alt="Our Mission Towards Sustainable Infrastructure Development">
+            </div>
+        </section>
+
+        <section class="container grid-split reverse">
+            <div class="split-content">
+                <span class="section-label">Future Outlook</span>
+                <h2>Our Vision</h2>
+                <p>Our vision is to build the world's most interconnected and eco-friendly <a href="https://www.prlog.org/13150651-miningrace-advances-the-growth-of-global-mining-communities.html" target="_blank" class="highlight-link">global mining communities</a>, capped at an elite network of one million active participants. We envision a future where cryptocurrency mining is completely decentralized, sustainable, and driven by collective human synergy rather than corporate monopolies.</p>
+                <p>By expanding our global grid and continually integrating whitelisted, renewable energy mining farms, we strive to set the gold standard for collaborative blockchain networks. To dive deep into the foundations of our collaborative architecture, read the verified <a href="https://www.nairaland.com/8679924/miningrace-reveals-6-facts-community" target="_blank" class="highlight-link">6 facts about community mining</a> to understand our systematic framework operations.</p>
+            </div>
+            <div class="split-media">
+                <img src="Untitled design (59).jpg" alt="Our Global Connected Network Vision Strategy">
+            </div>
         </section>
 
     </main>
 
-    <!-- Global Layout Contact and Location Footer Area -->
     <footer>
         <div class="container footer-grid">
-            <div class="footer-info">
-                <h3>Our Headquarters Location</h3>
-                <p><strong>Miningrace</strong><br>
-                Al Quoz Industrial Area,<br>
-                Dubai, United Arab Emirates</p>
+            <div class="footer-brand">
+                <h4>MININGRACE</h4>
+                <p>Al Quoz Industrial Area,<br>Dubai, United Arab Emirates</p>
+                <p style="font-size: 0.8em; color: var(--text-secondary); margin-top: 20px;">&copy; 2026 Miningrace. All rights reserved.</p>
             </div>
-            <div class="footer-social">
-                <h3>Connect With Us</h3>
+            <div class="footer-links">
+                <h5>Connect With Us</h5>
                 <ul>
                     <li><a href="https://x.com/mining_race_" target="_blank">Twitter / X</a></li>
                     <li><a href="https://www.linkedin.com/company/miningrace1/about/?viewAsMember=true" target="_blank">LinkedIn</a></li>
